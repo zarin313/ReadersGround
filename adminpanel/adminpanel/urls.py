@@ -23,5 +23,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('crudop/', include('crudop.urls')),
+    path('readersground/', include('user.urls')),
     path('admin/', admin.site.urls),
 ]

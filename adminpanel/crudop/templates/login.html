@@ -1,0 +1,143 @@
+   {%load static%}
+   <!DOCTYPE html>
+   <html>
+   <head>
+   	 <!-- Required meta tags -->
+      <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   	<title>Readers Ground</title>
+   </head>
+   <body>
+   		<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-lg">
+      <div style="width: 200px"> </div>
+      <a class="navbar-brand" href="#"><h1 style="font-family: cursive; color:salmon;">ReadersGround</h1></a>
+      <div style="width: 300px"> </div>
+      <a class="navbar-brand" href="#"><h5 style="font-family: cursive; color:green;">Write Your Bookish Thoughts Here</h5></a>
+       
+        
+
+        
+</div>
+</nav>
+<div style="height: 100px"></div>
+      <!--navEnd-->   
+     <div class=" container-fluid " style=" height: 450px;">
+     	
+          <div class="row">
+          	
+               <div class="col-md-2 d-lg-none d-sm-inline" ></div>
+
+              <div class="col col-xl-6 col-md-8" >
+                  <br>
+              <h3 class=" text-dark " style=" text-align: center "> Log in to post and see reviews ! </h3>
+             <div class="container; was-validated" novalidate>
+          <form action="#" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% if isvalid is False %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            Invalid email or password !!!!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+
+                        <div class="form-group  " style=" padding-left: 200px" was>
+                        <label class="text-dark" >Username</label>
+                      <input type="text" class="form-control " required   style="width: 200px" name="loginname"  >
+
+                        <label class="text-dark" >Password</label>
+                         <input type="password" required class="form-control border"  style="width: 200px" name="loginpass">
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-outline-white bg-dark text-light " >Log In</button>
+
+
+
+             </div>
+                    </form>
+
+
+                  
+
+
+      </div>
+                  </div>
+             
+             
+              	<div class="container-fluid col-xl-6 d-xl-inline" >
+              							<h3 class=" text-dark " style=" text-align: center "> Or sign up to be a part of our family ❤
+                    
+                  </h3>
+                                          <form action=# class= "was-validated" novalidate method="POST">
+                                            {% csrf_token %}
+
+
+
+
+
+                                          <div class="form-group row ">
+                                            <div class="col-xl-6">
+                                            <label > Name</label>
+                                               <input type="text" required  class="form-control " name="name"   >
+                                             </div>
+
+
+                                              <div class="col-xl-6">
+                                                  <label >User Name</label>
+
+                                                  <input type="text" required name="uname" class="form-control " pattern= "[a-z0-9]{6,}">
+                                                  <p style="font-size: 10px"> Use lowercase letter, digits, minimun 6 characters </p>
+                                              </div>
+                                            <div class="col col-xl-6">
+                                            <label >Email</label>
+                                               <input type="text" class="form-control " required name="email"  >
+                                             </div>
+                                              
+
+
+
+                                              <div class="col-xl-6">
+                                            <label >Password</label>
+                                               <input type="password" name="pas" required class="form-control "  pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"
+>
+                                                  <ul style=" font-size: 10px;list-style: none"><li>A digit</li><li> minimum length 5</li>
+                                                  </ul>
+                                             </div>
+                                              <div class="col-xl-6">
+                                                  <label >Confirm Password</label>
+                                                   <input type="password" name="confpas" required class="form-control " pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$"   >
+
+
+                                              </div>
+                                              <br>
+
+
+                                           </div>
+
+                                         
+                                              <br>
+                                             <button type="submit" class="btn btn-success " >Sign Up</button>
+
+
+
+                                  </form>
+                                      </div>
+              <!--<div> <img style=" padding-top: 30px" src="{% static 'pic.png' %}" ></div>-->
+              
+              </div>
+      </div>
+           
+
+
+
+   </body>
+   </html>       
+ <!--navstart-->
+    

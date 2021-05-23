@@ -5,17 +5,9 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarId" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
+        <a class="navbar-brand" href="#"><h5 style="font-family: cursive; color:green;">Write Your Bookish Thoughts Here</h5></a>
         <div class="collapse navbar-collapse" id="navbarId">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href={% url 'homeview' %}>Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
-            </li>
-
-          </ul>
+          
 
                     <!--
                     <div class="d-none d-lg-block">
@@ -30,17 +22,22 @@
               <img src="image/cart1.jpg" alt="logo" loading="lazy" width="50" height="50" class="m-10">
             </a>
               -->
-              <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              <div style="width: 300px"> </div>
+          
+                <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href={% url 'homeview' %}>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profile</a>
+            </li>
 
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#logModal" style="margin:5px;">
-                  Log In
+          </ul>
+                
+                <button type="button" class="btn btn-info"  style="margin:5px;">
+                  Log Out
                 </button>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signModal">
-                  Signup
-                </button>
-              </form>
+              
 
 
           </div>
