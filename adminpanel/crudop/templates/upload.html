@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>upload</title>
+  </head>
+  <body>
+    
+
+{% include 'nav.html'%}
+        <!--login-->
+                <div class="container-fluid">
+                  <!-- Button trigger modal -->
+
+                <!-- Modal -->
+                  <div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">LogIn</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="container-fluid">
+
+                            <form>
+                              <div class="form-group">
+                                <label >Username</label>
+                                  <input type="text" class="form-control">
+
+                              </div>
+                            </form>
+
+
+                            <form>
+                              <div class="form-group">
+                                <label >Password</label>
+                                  <input type="text" class="form-control" >
+                              </div>
+                            </form>
+
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary check1" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Log in</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+        <!--loginEnd-->
+
+
+
+
+
+
+
+        <!--Signup-->
+        <div class="container-fluid">
+                  <!-- Button trigger modal -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="signModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Signup</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                     <div class="modal-body">
+                        <div class="container-fluid" style="height:70vh;">
+
+                          <div class="row">
+                            <div cla
+                                 ss="col-12 col-lg-6">
+                              <form>
+                                <div class="form-group">
+                                  <input type="text" class="form-control" placeholder="name">
+                                </div>
+                              </form>
+                            </div>
+
+
+                            <div class="col-12 col-lg-6">
+                              <form>
+                                <div class="form-group">
+                                  <input type="text" class="form-control" placeholder="Age">
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+
+
+                          <div class="row">
+                            <div class="col-12 col-lg-6">
+                              <form>
+                                <div class="form-group">
+                                  <input type="text" class="form-control" placeholder="Phone">
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+
+
+                          <div class="row">
+                            <div class="col-12 col-lg-6" >
+                              <form>
+                                <div class="form-group">
+                                  <input type="text" class="form-control" id="con" placeholder="Countrycode">
+                                    <div class="invalid-feedback">
+                                         The region is out of service.
+                                    </div>
+                                    <div class="valid-feedback">
+                                         Correct format.
+                                    </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-12 col-lg-6" >
+                              <form>
+                                <div class="form-group">
+                                  <input type="text" class="form-control" id="mail" placeholder="Email">
+                                    <div class="invalid-feedback">
+                                        Incorrect mail format.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Correct format.
+                                    </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+
+
+
+
+                          <div class="row">
+                            <div class="col-12 col-lg-6" style="padding-top:10px">
+                              <form>
+                                <div class="form-group">
+                                  <input type="text" class="form-control" id="uname" placeholder="Username">
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+
+
+                          <div class="row">
+                            <div class="col-12 col-lg-6">
+                              <form>
+                                <div class="form-group">
+                                  <input type="text" class="form-control" id="pass" placeholder="Password">
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="col-12 col-lg-6">
+                                <form>
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" id="cpass" placeholder="Confirm Password">
+                                    </div>
+                                  </form>
+                              </div>
+                            </div>
+
+
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Signup</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+        <!--SignupEnd-->-->
+<br><br><br><br>
+  <div class="p-5 m-5 col-8 btn btn-outline-success">
+    <a href="{% url 'show' %}"><h2 style="font-family:cursive; color:coral">Tap to see the <sup>BOOK</sup> List</h2></a>
+  </div>
+  <hr>
+  <div style="background:skyblue" class="btn col-12">
+  <h3 style="padding-left:100px;font-family:cursive; color:crimson">Go down to <strong>ADD</strong> your precious Book Reviews !!!!</h3>
+</div>
+<hr>
+    <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {% if success is True %}
+        <div class="alert alert-success alert-dismissible fade show m-20" role="alert">
+             Added successfully !!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% elif success is False %}
+        <div class="alert alert-danger alert-dismissible fade show m-20" role="alert">
+            A problem occured during  upload !!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+
+        {% if f.errors %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Input Error !!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        <div class="form-group container shadow m-5 p-3 col-6">
+            <label for="name">Book Name:</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="form-group container shadow m-5 p-3 col-6">
+            <label for="writer">Author Name:</label>
+            <input type="text" class="form-control" id="writer" name="writer">
+        </div>
+        <div class="form-group form-group container shadow m-5 p-3 col-3">
+        <label for="genre">Genre</label>
+        <select class="form-control" id="genre" name="genre">
+          <option >Action and Adventure</option>
+          <option >Classic</option>
+          <option >Comic Book or Graphic Novel</option>
+          <option >Detective and Mystery</option>
+          <option  >Fantasy</option>
+          <option >Historical fiction</option>
+        </select>
+      </div>
+
+    <div class="form-group form-group container shadow m-5 p-3 col-3">
+    <label for="rate">Rate</label>
+    <select class="form-control" id="rate" name="rate">
+      <option>Star :D</option>
+      <option >Average :)</option>
+      <option >Poor :(</option>
+    </select>
+  </div>
+
+        <div class="form-group-lg container h-80 w-20 shadow m-5 p-3 row="4" ">
+            <label for="review">Review:</label>
+            <textarea class="form-control" id="review" name="review"  > </textarea>
+         </div>
+          
+
+          <div class="form-group container shadow m-5 p-4 col-6">
+              <label for="image">Image upload:</label>
+              <input type="file" class="form-control-file" id="image" name="image">
+            </div>
+
+            <input type="submit" class="btn  btn-danger m-5" value="PUSH">
+
+
+
+
+    </form>
+
+
+
+
+
+
+    <div class="container-fluid bg-info m-10">
+      <div class="row" >
+        <div class="col-12 col-lg-3">
+          <h4 style="color: white;">ReadersGround</h4>
+          <p style="color: white;">__Buy:)</p>
+          <p style="color: white;">call us:<span style="color: pink;">+880 8624544</span></p>
+          <p style="color: white;">Email:<span style="color: pink;"> afrinlisa2012@live.com</span></p>
+        </div>
+
+        <div class="col-12 col-lg-3 ">
+          <h4 style="color: white;">Explore</h4>
+          <div>
+          <a  href="#" style="color: pink;">Home</a>
+        </div>
+        <div>
+          <a  href="#" style="color: pink;">About us</a>
+        </div>
+        <div>
+          <a  href="#" style="color: pink;">Services</a>
+        </div>
+          <a  href="#" style="color: pink;">Reviews</a>
+        </div>
+
+
+
+        <div class="col-12 col-lg-3">
+          <h4 style="color: white;">marketing</h4>
+          <div>
+          <a  href="#" style="color: pink;">Our Marketplace</a>
+        </div>
+          <a  href="#" style="color: pink;">Stakeholders</a>
+        </div>
+
+
+
+
+      <footer style="text-align: center; color: white">@2020 MIT License, All rights reserved.</footer>
+
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Show Products</title>
+  </head>
+  <body>
+    <hr>
+    <div style="background:">
+    <h3 style="padding-left:500px;font-family:cursive; color:crimson">Ground Reviews</h3>
+  </div>
+  <hr>
+    {% if success is True %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+         Delete successfully !!!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% elif success is False %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        A problem occured during deletion !!!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+    <div class="">
+      <a href="{% url 'upload' %}" class="btn btn-outline-info m-5" >Want to ADD Review ?</a>
+        <a href="{% url 'homeview' %}" class="btn btn-outline-info m-5" >Go to Homepage</a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+              
+              <th scope="col">Book Name</th>
+              <th scope="col">Writer Name</th>
+              <th scope="col">Genre</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Review</th>
+              <!--<th scope="col">Last Update Date</th>
+              <!--<th scope="col">Image</th>-->
+              <th scope="col">Update/Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if not data %}
+                <tr>
+                    <td colspan="7" class="text-center">No data found !!!</td>
+                </tr>
+            {% else %}
+                {% for item in data %}
+                    <tr>
+                        
+                        <td>{{ item.getName }}</td>
+                        <td>{{ item.getWriter }}</td>
+                        <td>{{ item.getGenre }}</td>
+                        <td>{{ item.getRate }}</td>
+                        <td>{{ item.getReview }}</td>
+                        <!--<td>{{ item.getUpldate }}</td>
+                        <!--<td><img src='{{ item.getImgpath }}' style="width:100px;height:100px;"></td>-->
+                        <td>
+
+                          <form action='{% url 'update' item.getId %}' method='GET'>
+                                <input class="btn btn-primary" type="submit" value="Update">
+                    </form>
+                           <form action='{% url 'deletelist' %}' id='delform' method='POST'>
+                                {% csrf_token %}
+                                <br>
+                        
+                                <input  type='hidden' name='pid' value="{{ item.getId }}">
+                                <input class="btn btn-danger "type="submit" value="Delete">
+                            </form>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div class="container-fluid bg-info m-10">
+      <div class="row" >
+        <div class="col-12 col-lg-3">
+          <h4 style="color: white;">ReadersGround</h4>
+          <p style="color: white;">__Buy:)</p>
+          <p style="color: white;">call us:<span style="color: pink;">+880 8624544</span></p>
+          <p style="color: white;">Email:<span style="color: pink;"> afrinlisa2012@live.com</span></p>
+        </div>
+
+        <div class="col-12 col-lg-3 ">
+          <h4 style="color: white;">Explore</h4>
+          <div>
+          <a  href="#" style="color: pink;">Home</a>
+        </div>
+        <div>
+          <a  href="#" style="color: pink;">About us</a>
+        </div>
+        <div>
+          <a  href="#" style="color: pink;">Services</a>
+        </div>
+          <a  href="#" style="color: pink;">Reviews</a>
+        </div>
+
+
+
+        <div class="col-12 col-lg-3">
+          <h4 style="color: white;">marketing</h4>
+          <div>
+          <a  href="#" style="color: pink;">Our Marketplace</a>
+        </div>
+          <a  href="#" style="color: pink;">Stakeholders</a>
+        </div>
+
+
+
+
+      <footer style="text-align: center; color: white">@2020 MIT License, All rights reserved.</footer>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script>
+    document.getElementById('delform').addEventListener('submit',confirmation);
+    function confirmation(e){
+        var result=window.confirm("Do you want to delete this data?");
+        if(result){
+            //let's continue to form submission
+        }
+        else{
+            e.preventDefault();
+        }
+    }
+    </script>
+  </body>
+</html>
