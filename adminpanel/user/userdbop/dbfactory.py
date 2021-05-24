@@ -1,4 +1,4 @@
-rom django.db import connection
+from django.db import connection
 
 #a singleton factory class to provide database cursors
 class DBFactory:
