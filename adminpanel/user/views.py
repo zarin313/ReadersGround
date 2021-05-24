@@ -37,8 +37,8 @@ def signup(request):
                     return render(request, 'login.html', {'f':django_form,'success':False,'successsame':True})
 
                 userdao.insertUser(userob)
-                django_form=myforms.signupForm()
-                return render(request, 'login.html', {'f':django_form, 'success':True})
+                django_form=logsignfroms.signupForm()
+                return render(request, 'login.html', { 'success':True})
             except:
                 return render(request, 'login.html', {'f':django_form, 'success':False})
         else:
