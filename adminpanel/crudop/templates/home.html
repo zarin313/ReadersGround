@@ -46,20 +46,30 @@
                      <div class="shadow" style="height:200px; width: 900px;overflow: auto" ><p>{{ item.getReview }} </p></div><br>
                     <!--<img src='{{ item.getImgpath }}' style="width:300px;height:300px;">-->
                     
-                    <form action='{% url 'update' item.getId %}' method='GET'>
-                                <input class="btn btn-primary" type="submit" value="Update">
+                    <form action="{% url 'update' item.getId %}" method='GET'>
+                                <input style="float: left" class="btn btn-primary" type="submit" value="Update">
                     </form>
-                    <form action='{% url 'delete' %}' id='delform' method='POST'>
+                    <form action="{% url 'delete' %}" id='delform' method='POST'>
                                 {% csrf_token %}
-                                <br>
+                                
                         
                                 <input  type='hidden' name='pid' value="{{ item.getId }}">
-                                <input class="btn btn-danger "type="submit" value="Delete">
+                                <input style="float: left" class="btn btn-danger "type="submit" value="Delete">
                             </form>
          
                 </div>
                     
-                       <hr> 
+                        
+                       <form action="" method='GET'>
+                    
+                    
+                <div class="form-group-lg container h-80 w-20 shadow m-5 p-3 row" >
+            <label for="comment" >Comment here:</label>
+            <textarea class="form-control" id="review" name="review"  > </textarea>
+            <input class="btn btn-primary" type="submit" value="Post Comment">
+         </div>
+     </form>
+     <hr>
                     
                 {% endfor %}
             {% endif %}     
