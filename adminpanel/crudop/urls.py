@@ -6,6 +6,8 @@ urlpatterns=[
     path('',views.homeview,name="homeview"),
     path('upload/', views.upload, name="upload"),
     path('show/', views.show, name="show"),
+    path('comment/', views.addComment, name="addComment"),
+
     path('delete/',views.delete, name='delete'),
     path('deletel/',views.delete, name='deletelist'),
     path('update/<int:pid>/',views.update, name='update'),

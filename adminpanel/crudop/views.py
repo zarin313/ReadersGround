@@ -3,6 +3,7 @@ from . import myforms
 from django.core.files.storage import FileSystemStorage
 # importing database modules
 from .dbmodels.product import Product
+from .dbmodels.comment import Comment
 from .dbmodels.productdao import ProductDAO
 
 # Create your views here.
@@ -98,7 +99,34 @@ def update(request,pid):
                 return render(request,'update.html',{'f':django_form,'success':False})
         else:
             return render(request, 'update.html',{'f':django_form})
+def addComment(request):
+    if request.method=="GET":
+        django_form=myforms.commentForm()
+        return render(request, 'home.html', {'f':django_form})
+    elif request.method=="POST":
+        pid1=request.POST['pid1']
+        django_form=myforms.commentForm(request.POST)
+        if django_form.is_valid():
+            
+            #receiving the cleaned data
+            content=django_form.cleaned_data['content']
+            
+            c=Comment(-1,pid1,content)
+            print(content)
 
- 
+            dao=ProductDAO()
+
+            prodlist=dao.showall() 
 
 
+            try:
+                
+                dao.pcomment(c)
+
+                #reinitializing django form
+                django_form=myforms.commentForm()
+                return render(request, 'home.html', {'f':django_form,'data':prodlist})
+            except:
+                return render(request, 'home.html', {'f':django_form,'data':prodlist})
+        else:
+            return render(request, 'home.html', {'f':django_form,'data':prodlist})

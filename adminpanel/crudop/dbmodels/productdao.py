@@ -1,6 +1,6 @@
 from .dbfactory import DBFactory
 from .product import Product
-
+from .comment import Comment
 class ProductDAO:
 
     def getDBCursor(self):
@@ -54,8 +54,19 @@ class ProductDAO:
         dbcursor=self.getDBCursor()
         try:
             print("fhfjgfg")
-            dbcursor.execute("UPDATE product SET name=%s, writer=%s, genre=%s, rate=%s, review=%s  WHERE id=%s", [p.getName(),p.getWriter(),p.getGenre(),p.getRate(),p.getReview(),p.getId()])
+            dbcursor.execute("UPDATE product SET name=%s, writer=%s, genre=%s, rate=%s, review=%s  WHERE id=%s)", [p.getName(),p.getWriter(),p.getGenre(),p.getRate(),p.getReview(),p.getId()])
             print("orr")
+        except:
+            raise Exception('data insertion error')
+        finally:
+            dbcursor.close()
+
+    def pcomment(self, c):
+        dbcursor=self.getDBCursor()
+        
+        try:
+
+            dbcursor.execute("INSERT INTO comment VALUES ('',%s,%s,%s)", [c.getPId(),c.getContent(),c.getContent()])
         except:
             raise Exception('data insertion error')
         finally:

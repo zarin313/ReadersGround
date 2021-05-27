@@ -60,12 +60,17 @@
                 </div>
                     
                         
-                       <form action="{% url 'addComment' %}" method="POST" >
+                
                     
-                    
+             
+            <form action="{% url 'addComment' %}" method="POST" >
                 <div class="form-group-lg container h-80 w-20 shadow m-5 p-3 row" >
+             {% csrf_token %}
+
+                                
             <label for="comment" >Comment here:</label>
-            <textarea class="form-control" id="review" name="review"  > </textarea>
+            <textarea class="form-control h-80 w-20 shadow m-5 p-3" id="content" name="content" > </textarea>
+            <input  type='hidden' name='pid1' value="{{ item.getId }}">
             <input class="btn btn-primary" type="submit" value="Post Comment">
          </div>
      </form>
@@ -94,7 +99,7 @@
     }
     </script>
     <!-- for receiving csrf cookies -->
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    
      </script>
     {% load static %}
     <script src="{% static 'ajax.js' %}"></script>
