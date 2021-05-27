@@ -60,7 +60,7 @@
                 </div>
                     
                         
-                       <form action="" method='GET'>
+                       <form action="{% url 'addComment' %}" method="POST" >
                     
                     
                 <div class="form-group-lg container h-80 w-20 shadow m-5 p-3 row" >
@@ -81,6 +81,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script>
+
     document.getElementById('delform').addEventListener('submit',confirmation);
     function confirmation(e){
         var result=window.confirm("Do you want to delete this data?");
@@ -92,5 +93,10 @@
         }
     }
     </script>
+    <!-- for receiving csrf cookies -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+     </script>
+    {% load static %}
+    <script src="{% static 'ajax.js' %}"></script>
     </body>
 </html>
