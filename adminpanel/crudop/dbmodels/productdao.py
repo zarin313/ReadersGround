@@ -71,3 +71,21 @@ class ProductDAO:
             raise Exception('data insertion error')
         finally:
             dbcursor.close()
+
+    def showc(self):
+        dbcursor1=self.getDBCursor()
+        try:
+            print(id)
+            dbcursor1.execute("SELECT * FROM comment ")
+            print("mkoiuyt")
+            result1=dbcursor1.fetchall()
+            commlist=[]
+            
+            for row in result1:
+                comment=Comment(row[0],row[1],row[2])
+                commlist.append(comment)
+            return commlist
+        except:
+            raise Exception('database error')
+        finally:
+            dbcursor1.close()

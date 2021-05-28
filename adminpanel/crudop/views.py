@@ -9,8 +9,13 @@ from .dbmodels.productdao import ProductDAO
 # Create your views here.
 def homeview(request):
     dao=ProductDAO()
-    prodlist=dao.showall() #list of product objects
-    return render(request, 'home.html',{'data':prodlist})
+    prodlist=dao.showall()
+    commlist=dao.showc()
+    #for i in prodlist:
+        #commlist.append(dao.showc(i.getId()))
+    #commlist=dao.showc(pid)
+    print(commlist)
+    return render(request, 'home.html', {'data':prodlist, 'data1':commlist })
 def upload(request):
     if request.method=="GET":
         django_form=myforms.UploadForm()
@@ -130,3 +135,4 @@ def addComment(request):
                 return render(request, 'home.html', {'f':django_form,'data':prodlist})
         else:
             return render(request, 'home.html', {'f':django_form,'data':prodlist})
+

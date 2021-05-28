@@ -54,26 +54,34 @@
                                 
                         
                                 <input  type='hidden' name='pid' value="{{ item.getId }}">
-                                <input style="float: left" class="btn btn-danger "type="submit" value="Delete">
+                                <input class="btn btn-danger "type="submit" value="Delete">
                             </form>
          
                 </div>
-                    
-                        
+                    <br>
+                          {% for item1 in data1 %}
+                            <div style="padding-left: 200px">
+                            {% if item1.getPId == item.getId %}
+                                <b>User Name: <P>   </P>
+
+                                 <div class="shadow" style="height:70px; width: 700px;overflow: auto" ><p>
+                                 {{ item1.getContent }} </p></div><br>
+                            {% endif %}
+                            </div>
                 
-                    
+                          {% endfor %}
              
             <form action="{% url 'addComment' %}" method="POST" >
-                <div class="form-group-lg container h-80 w-20 shadow m-5 p-3 row" >
+                <div class="form-group-lg container row"style="padding-left: 200px" >
              {% csrf_token %}
-
-                                
-            <label for="comment" >Comment here:</label>
-            <textarea class="form-control h-80 w-20 shadow m-5 p-3" id="content" name="content" > </textarea>
+                    
+            <label for="comment" >Post your comment here:</label>
+            <textarea class="form-control shadow m-5 "  id="content" name="content" > </textarea>
             <input  type='hidden' name='pid1' value="{{ item.getId }}">
             <input class="btn btn-primary" type="submit" value="Post Comment">
          </div>
      </form>
+
      <hr>
                     
                 {% endfor %}
