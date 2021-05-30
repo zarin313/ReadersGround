@@ -10,10 +10,13 @@ from .userdbop import userDAO
 def loginview(request):
     #list of product objects
     return render(request, 'login.html')
+def login(request):
+    #list of product objects
+    return HttpResponse("Hello World!")
 def signup(request):
-    
+
     udao=userDAO.UserDAO()
-    
+
     if request.method=="GET":
         django_form=logsignfroms.signupForm()
         return render(request, 'login.html', {'f':django_form})
@@ -24,7 +27,7 @@ def signup(request):
             name=django_form.cleaned_data['name']
             uname=django_form.cleaned_data['uname']
             email=django_form.cleaned_data['email']
-          
+
             pas=django_form.cleaned_data['pas']
             confpas=django_form.cleaned_data['confpas']
 
