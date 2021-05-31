@@ -59,31 +59,42 @@
          
                 </div>
                     <br>
+                   
+                            <table class="table ">
+                          <tr>
+                            <th> User Name </th> 
+                            <th> Comment </th>
+                          </tr>
                           {% for item1 in data1 %}
-                            <div style="padding-left: 200px">
-                            {% if item1.getPId == item.getId %}
-                                <b>User Name: <P>   </P>
 
-                                 <div class="shadow" style="height:70px; width: 700px;overflow: auto" ><p>
-                                 {{ item1.getContent }} </p></div><br>
+
+                            
+                            {% if item1.getPId == item.getId %}
+                            <tr>
+                            <td>   </td>
+                            <td style="overflow: auto;"> {{ item1.getContent }} </td>
+                            </tr>    
+
+
                             {% endif %}
-                            </div>
+                            
+                           
                 
                           {% endfor %}
              
-            <form action="{% url 'addComment' %}" method="POST" >
+            <form  >
                 <div class="form-group-lg container row"style="padding-left: 200px" >
-             {% csrf_token %}
+            
                     
             <label for="comment" >Post your comment here:</label>
             <textarea class="form-control shadow m-5 "  id="content" name="content" > </textarea>
             <input  type='hidden' name='pid1' value="{{ item.getId }}">
-            <input class="btn btn-primary" type="submit" value="Post Comment">
+            <input id='commbtn' class="btn btn-primary" type="submit" value="Post Comment">
          </div>
      </form>
 
-     <hr>
-                    
+    <br>
+                </table>  
                 {% endfor %}
             {% endif %}     
       
@@ -105,10 +116,8 @@
             e.preventDefault();
         }
     }
-    </script>
-    <!-- for receiving csrf cookies -->
-    
-     </script>
+  
+     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     {% load static %}
     <script src="{% static 'ajax.js' %}"></script>
     </body>

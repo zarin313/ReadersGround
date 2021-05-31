@@ -105,6 +105,7 @@ def update(request,pid):
         else:
             return render(request, 'update.html',{'f':django_form})
 def addComment(request):
+    
     if request.method=="GET":
         django_form=myforms.commentForm()
         return render(request, 'home.html', {'f':django_form})
@@ -122,7 +123,7 @@ def addComment(request):
             dao=ProductDAO()
 
             prodlist=dao.showall() 
-
+            commlist=dao.showc()
 
             try:
                 
@@ -130,9 +131,9 @@ def addComment(request):
 
                 #reinitializing django form
                 django_form=myforms.commentForm()
-                return render(request, 'home.html', {'f':django_form,'data':prodlist})
+                return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
             except:
-                return render(request, 'home.html', {'f':django_form,'data':prodlist})
+                return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
         else:
-            return render(request, 'home.html', {'f':django_form,'data':prodlist})
+            return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
 
