@@ -139,7 +139,8 @@ def addcomment(request):
                 dao.pcomment(c)
 
                 #reinitializing django form
-                django_form=myforms.commentForm()
+                django_form=myforms.CForm()
+                commlist=dao.showc()
                 return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
             except:
                 return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
