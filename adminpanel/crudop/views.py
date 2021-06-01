@@ -6,16 +6,19 @@ from .dbmodels.product import Product
 from .dbmodels.comment import Comment
 from .dbmodels.productdao import ProductDAO
 
+#JsonResponse
+from django.http import *
 # Create your views here.
 def homeview(request):
     dao=ProductDAO()
     prodlist=dao.showall()
     commlist=dao.showc()
+    django_form=myforms.CForm()
     #for i in prodlist:
         #commlist.append(dao.showc(i.getId()))
     #commlist=dao.showc(pid)
-    print(commlist)
-    return render(request, 'home.html', {'data':prodlist, 'data1':commlist })
+    
+    return render(request, 'home.html', {'f':django_form, 'data':prodlist, 'data1':commlist })
 def upload(request):
     if request.method=="GET":
         django_form=myforms.UploadForm()
@@ -86,16 +89,16 @@ def update(request,pid):
     elif request.method=='POST':
         django_form=myforms.UpdateForm(request.POST)
         if django_form.is_valid():
-            id=django_form.cleaned_data['pid']
+            #id=django_form.cleaned_data['pid']
             name=django_form.cleaned_data['name']
             writer=django_form.cleaned_data['writer']
             genre=django_form.cleaned_data['genre']
             rate=django_form.cleaned_data['rate']
             review=django_form.cleaned_data['review']
 
-            p=Product(id, name, writer, genre, rate, review,'')
+            p=Product(pid, name, writer, genre, rate, review,'')
             dao=ProductDAO()
-            print(id)
+            print("pppppp")
             try:
                 dao.update(p)
                 print("Vsdvf")
@@ -104,26 +107,32 @@ def update(request,pid):
                 return render(request,'update.html',{'f':django_form,'success':False})
         else:
             return render(request, 'update.html',{'f':django_form})
-def addComment(request):
-    
+
+def addcomment(request):
     if request.method=="GET":
-        django_form=myforms.commentForm()
-        return render(request, 'home.html', {'f':django_form})
+        django_form=myforms.CForm()
+        dao=ProductDAO()
+        prodlist=dao.showall()
+        commlist=dao.showc()
+
+        return render(request, 'home.html', {'f':django_form, 'data':prodlist, 'data1':commlist })
     elif request.method=="POST":
         pid1=request.POST['pid1']
-        django_form=myforms.commentForm(request.POST)
+        dao=ProductDAO()
+        prodlist=dao.showall() 
+        commlist=dao.showc()
+
+
+        django_form=myforms.CForm(request.POST)
+        print(django_form.is_valid())
         if django_form.is_valid():
             
             #receiving the cleaned data
             content=django_form.cleaned_data['content']
-            
             c=Comment(-1,pid1,content)
             print(content)
+            
 
-            dao=ProductDAO()
-
-            prodlist=dao.showall() 
-            commlist=dao.showc()
 
             try:
                 
@@ -136,4 +145,3 @@ def addComment(request):
                 return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
         else:
             return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
-

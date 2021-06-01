@@ -60,45 +60,51 @@
                 </div>
                     <br>
                    
-                            <table class="table ">
+                            <table class="table">
+                              
                           <tr>
                             <th> User Name </th> 
                             <th> Comment </th>
                           </tr>
+                          
                           {% for item1 in data1 %}
 
 
                             
                             {% if item1.getPId == item.getId %}
+                            
                             <tr>
                             <td>   </td>
-                            <td style="overflow: auto;"> {{ item1.getContent }} </td>
+                            <td > {{ item1.getContent }} </td>
                             </tr>    
-
-
+                            
+                         
                             {% endif %}
                             
                            
-                
                           {% endfor %}
+                        </table>
              
-            <form  >
-                <div class="form-group-lg container row"style="padding-left: 200px" >
-            
+                <form action="{% url 'addcomment' %}" method='POST' enctype="multipart/form-data"  >
+                   {% csrf_token %}
                     
-            <label for="comment" >Post your comment here:</label>
-            <textarea class="form-control shadow m-5 "  id="content" name="content" > </textarea>
+                    
+              <div class="form-group-lg container h-80 w-20 shadow m-5 p-3 row" >
+            <label for="comment" >Comment here:</label>
+            <textarea class="form-control" id="review" name="content"  > </textarea>
+            
             <input  type='hidden' name='pid1' value="{{ item.getId }}">
-            <input id='commbtn' class="btn btn-primary" type="submit" value="Post Comment">
-         </div>
-     </form>
+            <input class="btn btn-primary" type="submit" value="Post Comment">
+          </div>
+        </form>
 
     <br>
-                </table>  
+               
                 {% endfor %}
             {% endif %}     
-      
+      </div>
           </div>
+
  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -116,8 +122,8 @@
             e.preventDefault();
         }
     }
-  
-     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  </script>
+    
     {% load static %}
     <script src="{% static 'ajax.js' %}"></script>
     </body>

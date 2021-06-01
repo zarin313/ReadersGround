@@ -54,7 +54,7 @@ class ProductDAO:
         dbcursor=self.getDBCursor()
         try:
             print("fhfjgfg")
-            dbcursor.execute("UPDATE product SET name=%s, writer=%s, genre=%s, rate=%s, review=%s  WHERE id=%s)", [p.getName(),p.getWriter(),p.getGenre(),p.getRate(),p.getReview(),p.getId()])
+            dbcursor.execute("UPDATE product SET uname=%s, writer=%s, genre=%s, rate=%s, review=%s  WHERE id=%s", [p.getName(),p.getWriter(),p.getGenre(),p.getRate(),p.getReview(),p.getId()])
             print("orr")
         except:
             raise Exception('data insertion error')

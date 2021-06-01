@@ -18,5 +18,5 @@ class UpdateForm(forms.Form):
     rate=forms.CharField()
     review=forms.CharField()
 
-class commentForm(forms.Form):
+class CForm(forms.Form):
     content=forms.CharField()
