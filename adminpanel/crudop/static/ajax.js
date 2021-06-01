@@ -1,5 +1,6 @@
 var updbtn=document.getElementById('updbtn')
-upbtn.addEventListener('click',update)
+console.log("qaz")
+updbtn.addEventListener('click',update)
 
 function update(){
     req = new XMLHttpRequest()
@@ -31,19 +32,21 @@ function update(){
         }
     };
 
+
     const csrftoken = Cookies.get('csrftoken'); // {% csrf_token %}
+    pid=document.getElementById('pid').value;
     route=document.getElementById('route').value;
-    id=document.getElementById('pid').value;
-    name=document.getElementById('name').value;
-    writer=document.getElementById('writer').value;
-    genre=document.getElementById('genre').value;
-    rate=document.getElementById('rate').value;
-    review=document.getElementById('review').value;
-    console.log(route);
+    
+    name=document.getElementById('nameu').value;
+    writer=document.getElementById('writeru').value;
+    genre=document.getElementById('genreu').value;
+    rate=document.getElementById('rateu').value;
+    review=document.getElementById('reviewu').value;
+    console.log(name);
     req.open("POST", route, true); // true = asynchronous
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // no need for get request
     req.setRequestHeader('X-CSRFToken', csrftoken);
-    console.log(rid);
-    req.send("id="+rid+"name="+name+"genre="+genre+"rate="+rate+"review="+review);
+    
+    req.send("pid="+pid+"&name="+name+"&writer="+writer+"&genre="+genre+"&rate="+rate+"&review="+review);
 
 }

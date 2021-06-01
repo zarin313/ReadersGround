@@ -10,6 +10,8 @@ class UploadForm(forms.Form):
     #forms.DecimalField(widget=forms.TextInput)
     
     image=forms.FileField()
+
+    
 class UpdateForm(forms.Form):
     pid=forms.IntegerField(widget=forms.TextInput)
     name=forms.CharField()

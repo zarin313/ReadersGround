@@ -83,30 +83,32 @@ def update(request,pid):
     if request.method=='GET':
         dao=ProductDAO()
         p=dao.findprod(pid)
-
+        
         django_form=myforms.UpdateForm(initial={'pid':p.getId(), 'name':p.getName(), 'writer':p.getWriter(), 'genre':p.getGenre(), 'rate':p.getRate(),'review':p.getReview()})
         return render(request, 'update.html',{'f':django_form})
     elif request.method=='POST':
         django_form=myforms.UpdateForm(request.POST)
+        print(django_form.is_valid())
         if django_form.is_valid():
-            #id=django_form.cleaned_data['pid']
+            print("xxxx")
+
+            pid=django_form.cleaned_data['pid']
             name=django_form.cleaned_data['name']
             writer=django_form.cleaned_data['writer']
             genre=django_form.cleaned_data['genre']
             rate=django_form.cleaned_data['rate']
             review=django_form.cleaned_data['review']
-
             p=Product(pid, name, writer, genre, rate, review,'')
             dao=ProductDAO()
             print("pppppp")
             try:
                 dao.update(p)
                 print("Vsdvf")
-                return JsonResponse({'error': False, 'id':pid,'name': name, 'writer':writer,'genre':genre,'rate':rate,'review':review,'f':django_form})
+                return JsonResponse({'error': False, 'pid':pid,'name': name, 'writer':writer,'genre':genre,'rate':rate,'review':review})
             except:
-                return JsonResponse({'error':True,'f':django_form})
+                return JsonResponse({'error':True})
         else:
-            return JsonResponse({'error':True,'f':django_form})
+            return JsonResponse({'error':True})
 
 def addcomment(request):
     if request.method=="GET":

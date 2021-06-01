@@ -32,6 +32,7 @@
         </button>
     </div>
     {% endif %}
+    {{ f.errors }}
 <div class="row m-0">
   <div class="col xl 6 ">
       <h4 ><b> Update your Review</b></h4>
@@ -43,15 +44,15 @@
               
       <div class="form-group   col-6">
             <label for="name">Book Name:</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ f.name.value }}">
+            <input type="text" class="form-control" id="nameu" name="name" value="{{ f.name.value }}">
         </div>
         <div class="form-group col-6">
             <label for="writer">Author Name:</label>
-            <input type="text" class="form-control" id="writer" name="writer" value="{{ f.writer.value }}">
+            <input type="text" class="form-control" id="writeru" name="writer" value="{{ f.writer.value }}">
         </div>
         <div class="form-group form-group col-6">
         <label for="genre">Genre</label>
-        <select class="form-control" id="genre" name="genre" value="{{ f.genre.value }}" >
+        <select class="form-control" id="genreu" name="genre" value="{{ f.genre.value }}" >
           <option >Action and Adventure</option>
           <option >Classic</option>
           <option >Comic Book or Graphic Novel</option>
@@ -63,7 +64,7 @@
 
     <div class="form-group form-group col-6">
     <label for="rate">Rate</label>
-    <select class="form-control" id="rate" name="rate" value="{{ f.rate.value }}">
+    <select class="form-control" id="rateu" name="rate" value="{{ f.rate.value }}">
      <option >Star :D</option>
       <option >Average :)</option>
       <option >Poor :(</option>
@@ -72,15 +73,15 @@
 
         <div class="form-group w-50 col-6  ">
             <label for="review">Review:</label>
-            <textarea class="form-control " id="review" name="review"  > {{ f.review.value }}</textarea>
+            <textarea class="form-control " id="reviewu" name="review"  > {{ f.review.value }} </textarea>
          </div>
          
           
 <br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             <input type="hidden" name="pid" value="{{ f.pid.value }}">
-             <input type="hidden" name="route" value="{% url 'update' f.pid.value %}">
-        <input type="submit" class="btn btn-success " id="updbtn" value="Update">
+             <input type="hidden" id="pid" name="pid" value="{{ f.pid.value }}">
+             <input type="hidden" id="route"  name="route" value="{% url 'update' f.pid.value %}">
+            <button type="button" id="updbtn" class="btn btn-success">Update</button>
 
       
 </div>
@@ -90,15 +91,15 @@
     <div class="col xl 6">
                     <h4> Details </h4>
                     <br>
-                    <p>Book Name: </p>
-                    <p id="bn">{{ f.name.value }} <br>
-                    <p>Writer:</p>
-                    <p id="wn"> {{ f.writer.value }}</p><br>
-                    <p>Genre: </p>
-                    <p id="gn"> {{ f.genre.value }}</p> <br>
-                    <p>Rating:</p>
-                    <p id="rating"> {{ f.rate.value }}</p> </b><br>
-                    <p>Review</p>
+                    <p> <b>Book Name: </b></p>
+                    <p id="bn">{{ f.name.value }}</p>
+                    <p><b>Writer:</b></p>
+                    <p id="wn"> {{ f.writer.value }}</p>
+                    <p><b>Genre:</b> </p>
+                    <p id="gn"> {{ f.genre.value }}</p> 
+                    <p><b>Rating:</b></p>
+                    <p id="rating"> {{ f.rate.value }}</p> 
+                    <p><b>Review</b></p>
                      <div class="shadow " style="height:150px; overflow: auto" >
                       <p id="rc">{{ f.review.value }} </p>
                     </div><br>
@@ -108,8 +109,17 @@
       
     </div>
     </div>
-<!-- for receiving csrf cookies -->
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <!-- for receiving csrf cookies -->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
     {% load static %}
     <script src="{% static 'ajax.js' %}"></script>
     </body>
