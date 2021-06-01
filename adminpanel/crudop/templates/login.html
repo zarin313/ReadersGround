@@ -19,18 +19,18 @@
       <a class="navbar-brand" href="#"><h1 style="font-family: cursive; color:salmon;">ReadersGround</h1></a>
       <div style="width: 300px"> </div>
       <a class="navbar-brand" href="#"><h5 style="font-family: cursive; color:green;">Write Your Bookish Thoughts Here</h5></a>
-       
-        
 
-        
+
+
+
 </div>
 </nav>
 <div style="height: 100px"></div>
-      <!--navEnd-->   
-       
+      <!--navEnd-->
+
               {% if success is True %}
                 <div class="alert alert-success" role="alert">
-                  
+
                     Signup successful
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -38,7 +38,7 @@
                 </div>
                 <div>
                   <h3 class=" text-dark " style=" text-align: center "> Thanks for signing up please login to continue ❤
-                    
+
                   </h3>
                 </div>
                 <hr>
@@ -58,16 +58,16 @@
                      </div>
               {% endif %}
      <div class=" container-fluid " style=" height: 450px;">
-     	
+
           <div class="row">
-          	
+
                <div class="col-md-2 d-lg-none d-sm-inline" ></div>
 
               <div class="col col-xl-6 col-md-8" >
                   <br>
               <h3 class=" text-dark " style=" text-align: center "> Log in to post and see reviews ! </h3>
              <div class="container; was-validated" novalidate>
-          <form action="#" method="POST" enctype="multipart/form-data">
+          <form action="{% url 'login' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% if isvalid is False %}
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -94,16 +94,16 @@
                     </form>
 
 
-                  
+
 
 
       </div>
                   </div>
-             
+
              {% if not success %}
               	<div class="container-fluid col-xl-6 d-xl-inline" >
               							<h3 class=" text-dark " style=" text-align: center "> Or sign up to be a part of our family ❤
-                    
+
                   </h3>
                                           <form action="{% url 'signup' %}"class= "was-validated" novalidate method="POST">
                                             {% csrf_token %}
@@ -129,7 +129,7 @@
                                             <label >Email</label>
                                                <input type="text" class="form-control " required name="email"  >
                                              </div>
-                                              
+
 
 
 
@@ -151,7 +151,7 @@
 
                                            </div>
 
-                                         
+
                                               <br>
                                              <button type="submit" class="btn btn-success " >Sign Up</button>
 
@@ -161,14 +161,13 @@
                                       </div>
                                       {% endif %}
               <!--<div> <img style=" padding-top: 30px" src="{% static 'pic.png' %}" ></div>-->
-              
+
               </div>
       </div>
-           
+
 
 
 
    </body>
-   </html>       
+   </html>
  <!--navstart-->
-    

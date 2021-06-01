@@ -11,8 +11,42 @@ def loginview(request):
     #list of product objects
     return render(request, 'login.html')
 def login(request):
-    #list of product objects
-    return HttpResponse("Hello World!")
+
+    udao=userDAO.UserDAO()
+
+    if request.method=="GET":
+        django_form=logsignfroms.loginForm()
+        django_form1=logsignfroms.signupForm()
+        return render(request, 'login.html', {'fl':django_form,'f2':django_form1})
+    if request.method=="POST":
+        django_form=logsignfroms.loginForm(request.POST)
+        django_form1=logsignfroms.signupForm()
+
+        if django_form.is_valid():
+
+            name=django_form.cleaned_data['loginname']
+            pas=django_form.cleaned_data['loginpass']
+
+            userob=user.User('',name,'',pas,'')
+
+            userdao=userDAO.UserDAO()
+
+            try:
+                is_valid=userdao.authenticate_user(userob)
+                if is_valid is True:
+                    request.session['username']=name
+
+                    print(request.session['username'])
+
+                    return render(request, 'home.html', {'isvalid':True,'loggedin':True} )
+                else:
+                    return render(request, 'login.html', {'fl':django_form,'f2':django_form1,'isvalid':False,'loggedin':False})
+            except:
+                return render(request, 'login.html', {'fl':django_form,'f2':django_form1,'isvalid':False,'loggedin':False})
+
+        else:
+
+            return render(request, 'login.html', {'fl':django_form,'f2':django_form1})
 def signup(request):
 
     udao=userDAO.UserDAO()
