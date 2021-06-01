@@ -102,11 +102,11 @@ def update(request,pid):
             try:
                 dao.update(p)
                 print("Vsdvf")
-                return render(request,'update.html',{'f':django_form,'success':True})
+                return JsonResponse({'error': False, 'id':pid,'name': name, 'writer':writer,'genre':genre,'rate':rate,'review':review,'f':django_form})
             except:
-                return render(request,'update.html',{'f':django_form,'success':False})
+                return JsonResponse({'error':True,'f':django_form})
         else:
-            return render(request, 'update.html',{'f':django_form})
+            return JsonResponse({'error':True,'f':django_form})
 
 def addcomment(request):
     if request.method=="GET":

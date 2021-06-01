@@ -90,12 +90,17 @@
     <div class="col xl 6">
                     <h4> Details </h4>
                     <br>
-                    <p>Book Name: {{ f.name.value }} <br>
-                    <p>Writer: {{ f.writer.value }}</p><br>
-                    <p> Genre: {{ f.genre.value }}</p> <br>
-                    <p>Rating: {{ f.rate.value }}</p> </b><br>
+                    <p>Book Name: </p>
+                    <p id="bn">{{ f.name.value }} <br>
+                    <p>Writer:</p>
+                    <p id="wn"> {{ f.writer.value }}</p><br>
+                    <p>Genre: </p>
+                    <p id="gn"> {{ f.genre.value }}</p> <br>
+                    <p>Rating:</p>
+                    <p id="rating"> {{ f.rate.value }}</p> </b><br>
+                    <p>Review</p>
                      <div class="shadow " style="height:150px; overflow: auto" >
-                      <p>{{ f.review.value }} </p>
+                      <p id="rc">{{ f.review.value }} </p>
                     </div><br>
                     <!--<img src='{{ item.getImgpath }}' style="width:300px;height:300px;">-->
                     

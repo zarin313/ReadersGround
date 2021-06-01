@@ -15,14 +15,13 @@ function update(){
                 console.log("received data");
                 if(received_data['error']==false){
                     ///placing dynamic html table data
-                    
-                    tablebody=document.getElementById('comlist');
+                    document.getElementById('bn').innerHTML=received_data['name'];
+                    document.getElementById('wn').innerHTML=received_data['writer'];
+                    document.getElementById('gn').innerHTML=received_data['genre'];
+                    document.getElementById('rating').innerHTML=received_data['rate'];
+                    document.getElementById('rc').innerHTML=received_data['review'];
 
-                    var newrow=document.createElement('tr');
-
-                    newrow.innerHTML="<td>"+' '+"</td>"+"<td>"+received_data['content']+"</td>";
-
-                    tablebody.appendChild(newrow);
+                
                 }
                 else{
                     console.log("error");
@@ -36,10 +35,11 @@ function update(){
     route=document.getElementById('route').value;
     id=document.getElementById('pid').value;
     name=document.getElementById('name').value;
+    writer=document.getElementById('writer').value;
     genre=document.getElementById('genre').value;
     rate=document.getElementById('rate').value;
     review=document.getElementById('review').value;
-    console.log(route)
+    console.log(route);
     req.open("POST", route, true); // true = asynchronous
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // no need for get request
     req.setRequestHeader('X-CSRFToken', csrftoken);
