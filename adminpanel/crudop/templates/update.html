@@ -14,11 +14,8 @@
     <div style="height: 100px"></div>
     
 {% include 'nav.html'%}
-      <h4 style="padding-left: 500px"><b> Update your Review</b></h4>
-          <form action="{% url 'update' f.pid.value %}" method="POST">
-            {% csrf_token %}
-              
-            {% if success is True %}
+
+  {% if success is True %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
          Updated successfully !!!
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -28,23 +25,31 @@
               <div style="padding-left: 500px">
        <a href="{% url 'homeview' %}" class="btn btn-outline-info m-5" >Go to Homepage </a></div>
     {% elif success is False %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
         A problem occured during update !!!
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
     {% endif %}
+<div class="row m-0">
+  <div class="col xl 6 ">
+      <h4 ><b> Update your Review</b></h4>
+      <br>
+          <form >
+            {% csrf_token %}
               
-      <div class="form-group container shadow m-5 p-3 col-6">
+          <div class="shadow">
+              
+      <div class="form-group   col-6">
             <label for="name">Book Name:</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ f.name.value }}">
         </div>
-        <div class="form-group container shadow m-5 p-3 col-6">
+        <div class="form-group col-6">
             <label for="writer">Author Name:</label>
             <input type="text" class="form-control" id="writer" name="writer" value="{{ f.writer.value }}">
         </div>
-        <div class="form-group form-group container shadow m-5 p-3 col-3">
+        <div class="form-group form-group col-6">
         <label for="genre">Genre</label>
         <select class="form-control" id="genre" name="genre" value="{{ f.genre.value }}" >
           <option >Action and Adventure</option>
@@ -56,7 +61,7 @@
         </select>
       </div>
 
-    <div class="form-group form-group container shadow m-5 p-3 col-3">
+    <div class="form-group form-group col-6">
     <label for="rate">Rate</label>
     <select class="form-control" id="rate" name="rate" value="{{ f.rate.value }}">
      <option >Star :D</option>
@@ -65,22 +70,42 @@
     </select>
   </div>
 
-        <div class="form-group-lg container h-80 w-20 shadow m-5 p-3 row="4" ">
+        <div class="form-group w-50 col-6  ">
             <label for="review">Review:</label>
-            <textarea class="form-control" id="review" name="review"  > {{ f.review.value }}</textarea>
+            <textarea class="form-control " id="review" name="review"  > {{ f.review.value }}</textarea>
          </div>
+         
           
-
+<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              <input type="hidden" name="pid" value="{{ f.pid.value }}">
-        <input type="submit" class="btn btn-success " value="Update">
-
-      </form>
+             <input type="hidden" name="route" value="{% url 'update' f.pid.value %}">
+        <input type="submit" class="btn btn-success " id="updbtn" value="Update">
 
       
-    
+</div>
       
-    
-
+    </form>
+    </div>
+    <div class="col xl 6">
+                    <h4> Details </h4>
+                    <br>
+                    <p>Book Name: {{ f.name.value }} <br>
+                    <p>Writer: {{ f.writer.value }}</p><br>
+                    <p> Genre: {{ f.genre.value }}</p> <br>
+                    <p>Rating: {{ f.rate.value }}</p> </b><br>
+                     <div class="shadow " style="height:150px; overflow: auto" >
+                      <p>{{ f.review.value }} </p>
+                    </div><br>
+                    <!--<img src='{{ item.getImgpath }}' style="width:300px;height:300px;">-->
+                    
+                   
+      
+    </div>
+    </div>
+<!-- for receiving csrf cookies -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    {% load static %}
+    <script src="{% static 'ajax.js' %}"></script>
     </body>
 </html>

@@ -1,7 +1,7 @@
-/*var commbtn=document.getElementById('commbtn')
-commbtn.addEventListener('click',postComment)
+var updbtn=document.getElementById('updbtn')
+upbtn.addEventListener('click',update)
 
-function postComment(){
+function update(){
     req = new XMLHttpRequest()
 
     req.onreadystatechange=function(){
@@ -34,14 +34,16 @@ function postComment(){
 
     const csrftoken = Cookies.get('csrftoken'); // {% csrf_token %}
     route=document.getElementById('route').value;
-    rid=document.getElementById('pid0').value;
-    content=document.getElementById('content').value;
+    id=document.getElementById('pid').value;
+    name=document.getElementById('name').value;
+    genre=document.getElementById('genre').value;
+    rate=document.getElementById('rate').value;
+    review=document.getElementById('review').value;
     console.log(route)
     req.open("POST", route, true); // true = asynchronous
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // no need for get request
     req.setRequestHeader('X-CSRFToken', csrftoken);
     console.log(rid);
-    req.send("id="+rid+"con="+content);
+    req.send("id="+rid+"name="+name+"genre="+genre+"rate="+rate+"review="+review);
 
 }
-*/
