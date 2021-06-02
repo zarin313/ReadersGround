@@ -74,7 +74,7 @@ def login(request):
             userdao=userDAO.UserDAO()
             is_valid=userdao.authenticate_user(userob)
             if is_valid is True:
-                    request.session['username']=name
+                    
 
                     print(request.session['username'])
 

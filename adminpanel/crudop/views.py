@@ -12,7 +12,8 @@ def logout(request):
     del request.session['username']
     return render(request, 'login.html')
 def homeview(request):
-    print(request.session['username'])
+    user=request.session['username']
+    
     dao=ProductDAO()
     prodlist=dao.showall()
     commlist=dao.showc()
@@ -21,7 +22,7 @@ def homeview(request):
         #commlist.append(dao.showc(i.getId()))
     #commlist=dao.showc(pid)
     
-    return render(request, 'home.html', {'f':django_form, 'data':prodlist, 'data1':commlist })
+    return render(request, 'home.html', {'f':django_form, 'data':prodlist, 'data1':commlist,user })
 def upload(request):
     if request.method=="GET":
         django_form=myforms.UploadForm()
