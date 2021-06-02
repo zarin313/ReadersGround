@@ -22,7 +22,7 @@ def homeview(request):
         #commlist.append(dao.showc(i.getId()))
     #commlist=dao.showc(pid)
     
-    return render(request, 'home.html', {'f':django_form, 'data':prodlist, 'data1':commlist })
+    return render(request, 'home.html', {'f':django_form, 'data':prodlist, 'data1':commlist, 'u':user })
 def upload(request):
     if request.method=="GET":
         django_form=myforms.UploadForm()
