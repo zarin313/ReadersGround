@@ -1,8 +1,9 @@
 #for each database table create one and define necessary get set methods
 class Product:
     #constructor
-    def __init__(self, id, name, writer, genre, rate, review, imgpath):
+    def __init__(self, id,uname, name, writer, genre, rate, review, imgpath):
         self.__id=id
+        self.__uname=uname
         self.__name=name
         self.__writer=writer
         self.__genre=genre
@@ -15,6 +16,11 @@ class Product:
         return self.__id
     def setId(self, id):
         self.__id=id
+
+    def getuname(self):
+        return self.__uname
+    def setName(self, uname):
+        self.__uname=uname
 
     def getName(self):
         return self.__name
