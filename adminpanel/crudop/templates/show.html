@@ -66,17 +66,21 @@
                         <!--<td>{{ item.getUpldate }}</td>
                         <!<td><img src='{{ item.getImgpath }}' style="width:100px;height:100px;"></td>-->
                         <td>
+                          {% if u == item.getuname %}
 
-                          <form action='{% url 'update' item.getId %}' method='GET'>
+                          <form action="{% url 'update' item.getId %}" method='GET'>
                                 <input class="btn btn-primary" type="submit" value="Update">
                     </form>
-                           <form action='{% url 'deletelist' %}' id='delform' method='POST'>
+                    
+
+                           <form action="{% url 'deletelist' %}" id='delform' method='POST'>
                                 {% csrf_token %}
                                 <br>
                         
                                 <input  type='hidden' name='pid' value="{{ item.getId }}">
                                 <input class="btn btn-danger "type="submit" value="Delete">
                             </form>
+                            {% endif %}
 
                         </td>
                     </tr>
