@@ -5,7 +5,10 @@ from . import logsignfroms
 from django.core.files.storage import FileSystemStorage
 from .userdbop import user
 from .userdbop import userDAO
-
+from crudop import myforms
+from crudop.dbmodels.product import Product
+from crudop.dbmodels.comment import Comment
+from crudop.dbmodels.productdao import ProductDAO
 # Create your views here.
 
 def loginview(request):
@@ -47,6 +50,7 @@ def signup(request):
 def login(request):
    
     udao=userDAO.UserDAO()
+    
    
     if request.method=="GET":
         django_form=logsignfroms.loginForm()
@@ -54,7 +58,11 @@ def login(request):
         return render(request, 'login.html', {'fl':django_form,'f2':django_form1})
     if request.method=="POST":
         django_form=logsignfroms.loginForm(request.POST)
-        django_form1=logsignfroms.signupForm()
+        
+        pdao=ProductDAO()
+        prodlist=pdao.showall()
+        commlist=pdao.showc()
+        django_form3=myforms.CForm()
         
         if django_form.is_valid():
 
@@ -70,9 +78,9 @@ def login(request):
 
                     print(request.session['username'])
 
-                    return render(request, 'home.html', {'isvalid':True,'loggedin':True})
+                    return render(request, 'home.html', {'isvalid':True,'loggedin':True,'f':django_form3, 'data':prodlist, 'data1':commlist})
             else:
-                 return render(request, 'login.html', {'fl':django_form,'f2':django_form1,'isvalid':False,'loggedin':False})
+                 return render(request, 'login.html', {'fl':django_form,'f2':django_form1,'isvalid':False,'loggedin':False })
            
                 
                 

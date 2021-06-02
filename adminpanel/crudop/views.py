@@ -12,6 +12,7 @@ def logout(request):
     del request.session['username']
     return render(request, 'login.html')
 def homeview(request):
+    print(request.session['username'])
     dao=ProductDAO()
     prodlist=dao.showall()
     commlist=dao.showc()
@@ -150,4 +151,3 @@ def addcomment(request):
                 return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
         else:
             return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
-print("A")
