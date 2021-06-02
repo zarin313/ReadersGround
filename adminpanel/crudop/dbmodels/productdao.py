@@ -66,7 +66,7 @@ class ProductDAO:
         
         try:
 
-            dbcursor.execute("INSERT INTO comment VALUES ('',%s,%s,%s)", [c.getPId(),c.getContent(),c.getContent()])
+            dbcursor.execute("INSERT INTO comment VALUES ('',%s,%s,%s)", [c.getPId(),c.getContent(),c.getuser()])
         except:
             raise Exception('data insertion error')
         finally:
@@ -82,7 +82,7 @@ class ProductDAO:
             commlist=[]
             
             for row in result1:
-                comment=Comment(row[0],row[1],row[2])
+                comment=Comment(row[0],row[1],row[2],row[3])
                 commlist.append(comment)
             return commlist
         except:

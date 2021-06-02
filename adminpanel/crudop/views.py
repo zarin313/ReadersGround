@@ -128,22 +128,24 @@ def addcomment(request):
         dao=ProductDAO()
         prodlist=dao.showall() 
         commlist=dao.showc()
-
+        
+        userc=request.session['username']
 
         django_form=myforms.CForm(request.POST)
         print(django_form.is_valid())
         if django_form.is_valid():
+            userc=request.session['username']
             
             #receiving the cleaned data
             content=django_form.cleaned_data['content']
-            c=Comment(-1,pid1,content)
-            print(content)
-            
-
+            c=Comment(-1,pid1,content,userc)
+            print("rifa")
+            print(c.getuser())
 
             try:
                 
                 dao.pcomment(c)
+                
 
                 #reinitializing django form
                 django_form=myforms.CForm()

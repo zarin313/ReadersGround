@@ -76,9 +76,9 @@ def login(request):
             if is_valid is True:
                     
 
-                    user=request.session['username']
+                    username=request.session['username']
 
-                    return render(request, 'home.html',user, {'isvalid':True,'loggedin':True,'f':django_form3, 'data':prodlist, 'data1':commlist})
+                    return render(request, 'home.html', {'isvalid':True,'loggedin':True,'f':django_form3, 'data':prodlist, 'data1':commlist})
             else:
                  return render(request, 'login.html', {'fl':django_form,'f2':django_form1,'isvalid':False,'loggedin':False })
            

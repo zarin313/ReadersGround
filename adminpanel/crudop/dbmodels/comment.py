@@ -5,7 +5,7 @@ class Comment:
         self.__id=id
         self.__pid=pid
         self.__content=content
-        #self.__user=user
+        self.__user=user
         
     def getId(self):
         return self.__id
@@ -24,10 +24,9 @@ class Comment:
 
     def getuser(self):
         return self.__user
-    def getuser(self, user):
+    def setuser(self, user):
         self.__user=user
 
     #def getUser(self):
      #   return self.__user
-    #def setUser(self, user):
-     #   self.__user=user
+    
