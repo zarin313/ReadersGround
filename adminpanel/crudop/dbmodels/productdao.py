@@ -10,7 +10,7 @@ class ProductDAO:
     def upload(self, p):
         dbcursor=self.getDBCursor()
         try:
-            dbcursor.execute("INSERT INTO product VALUES('',%s,%s,%s,%s,%s,SYSDATE(),%s)", [p.getName(),p.getWriter(),p.getGenre(),p.getRate(),p.getReview(),p.getImgpath()])
+            dbcursor.execute("INSERT INTO product VALUES('',%s,%s,%s,%s,%s,%s,SYSDATE(),%s)", [p.getuname(),p.getName(),p.getWriter(),p.getGenre(),p.getRate(),p.getReview(),p.getImgpath()])
         except:
             raise Exception('data insertion error')
         finally:
@@ -23,7 +23,7 @@ class ProductDAO:
             productlist=[]
             
             for row in result:
-                prod=Product(row[0],row[1],row[2],row[3],row[4],row[5],row[7])
+                prod=Product(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[8])
                 productlist.append(prod)
             return productlist
         except:

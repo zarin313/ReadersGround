@@ -22,7 +22,7 @@ def homeview(request):
         #commlist.append(dao.showc(i.getId()))
     #commlist=dao.showc(pid)
     
-    return render(request, 'home.html', user, {'f':django_form, 'data':prodlist, 'data1':commlist })
+    return render(request, 'home.html', {'f':django_form, 'data':prodlist, 'data1':commlist })
 def upload(request):
     if request.method=="GET":
         django_form=myforms.UploadForm()
@@ -30,6 +30,7 @@ def upload(request):
     elif request.method=="POST":
         django_form=myforms.UploadForm(request.POST, request.FILES)
         if django_form.is_valid():
+            user=request.session['username']
             #receiving the cleaned data
             name=django_form.cleaned_data['name']
             writer=django_form.cleaned_data['writer']
@@ -44,7 +45,7 @@ def upload(request):
             filename=fs.save(image.name,image)
             imageurl=fs.url(filename)
 
-            p=Product(-1,name,writer,genre,rate,review,imageurl)
+            p=Product(-1,user,name,writer,genre,rate,review,imageurl)
             dao=ProductDAO()
             try:
                 dao.upload(p)

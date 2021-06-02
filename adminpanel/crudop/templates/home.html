@@ -40,7 +40,7 @@
                 {% for item in data %}
       
                 <div style="padding-left: 200px">
-                    <b>Name: <P>   </P>
+                    <P><b>UserName:  {{ item.getuname }}  </P>
                     <p>Book Name: {{ item.getName }} &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Writer: {{ item.getWriter }}</p><br>
                     <p> Genre: {{ item.getGenre }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating: {{ item.getRate }}</p> </b><br>
                      <div class="shadow" style="height:200px; width: 900px;overflow: auto" ><p>{{ item.getReview }} </p></div><br>

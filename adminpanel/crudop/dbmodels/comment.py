@@ -1,7 +1,7 @@
 #for each database table create one and define necessary get set methods
 class Comment:
     #constructor
-    def __init__(self, id, pid, content):
+    def __init__(self, id, pid, content,user):
         self.__id=id
         self.__pid=pid
         self.__content=content
@@ -21,6 +21,11 @@ class Comment:
         return self.__content
     def setContent(self, content):
         self.__content=content
+
+    def getuser(self):
+        return self.__user
+    def getuser(self, user):
+        self.__user=user
 
     #def getUser(self):
      #   return self.__user
