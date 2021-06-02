@@ -13,6 +13,7 @@ def logout(request):
     return render(request, 'login.html')
 def homeview(request):
     user=request.session['username']
+    print("mmmm")
     
     dao=ProductDAO()
     prodlist=dao.showall()
