@@ -5,10 +5,12 @@ from django.core.files.storage import FileSystemStorage
 from .dbmodels.product import Product
 from .dbmodels.comment import Comment
 from .dbmodels.productdao import ProductDAO
-
 #JsonResponse
 from django.http import *
 # Create your views here.
+def logout(request):
+    del request.session['username']
+    return render(request, 'login.html')
 def homeview(request):
     dao=ProductDAO()
     prodlist=dao.showall()

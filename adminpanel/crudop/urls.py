@@ -11,6 +11,8 @@ urlpatterns=[
     path('delete/',views.delete, name='delete'),
     path('deletel/',views.delete, name='deletelist'),
     path('update/<int:pid>/',views.update, name='update'),
+    path('logout/',views.logout,name="logout")
+
     
 
 ]
