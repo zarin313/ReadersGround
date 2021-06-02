@@ -150,3 +150,4 @@ def addcomment(request):
                 return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
         else:
             return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
+print("A")
