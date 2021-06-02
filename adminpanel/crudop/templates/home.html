@@ -29,7 +29,7 @@
     </div>
     {% endif %}
 {% include 'nav.html'%}
-      
+
     
       <div style="padding-left: 500px">
        <a href="{% url 'upload' %}" class="btn btn-outline-info m-5" >Click here if you want to add a review! </a></div>
@@ -45,10 +45,11 @@
                     <p> Genre: {{ item.getGenre }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating: {{ item.getRate }}</p> </b><br>
                      <div class="shadow" style="height:200px; width: 900px;overflow: auto" ><p>{{ item.getReview }} </p></div><br>
                     <!--<img src='{{ item.getImgpath }}' style="width:300px;height:300px;">-->
-                    
+                    {% if u == item.getuname %}
                     <form action="{% url 'update' item.getId %}" method='GET'>
                                 <input style="float: left" class="btn btn-primary" type="submit" value="Update">
                     </form>
+                    {% endif %}
                     <form action="{% url 'delete' %}" id='delform' method='POST'>
                                 {% csrf_token %}
                                 
