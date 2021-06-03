@@ -69,7 +69,14 @@
              <div class="container; was-validated" novalidate>
           <form action="{% url 'login' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        
+                        {% if isvalid is False %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            Invalid email or password !!!!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
 
                         <div class="form-group  " style=" padding-left: 200px" was>
                         <label class="text-dark" >Username</label>
