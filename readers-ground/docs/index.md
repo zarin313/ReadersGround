@@ -2,6 +2,10 @@
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
+## Prerequisite
+
+You must have faith
+
 ## Commands
 
 * `mkdocs new [dir-name]` - Create a new project.
