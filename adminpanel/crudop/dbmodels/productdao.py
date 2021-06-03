@@ -44,7 +44,7 @@ class ProductDAO:
             dbcursor.execute("SELECT * FROM product WHERE id=%s",[id])
             item=dbcursor.fetchall()[0]
 
-            prodobj=Product(item[0],item[1],item[2],item[3],item[4],item[5],item[7])
+            prodobj=Product(item[0],item[1],item[2],item[3],item[4],item[5],item[6],item[8])
             return prodobj
         except:
             raise Exception('data insertion error')
@@ -54,7 +54,7 @@ class ProductDAO:
         dbcursor=self.getDBCursor()
         try:
             print("fhfjgfg")
-            dbcursor.execute("UPDATE product SET uname=%s, writer=%s, genre=%s, rate=%s, review=%s  WHERE id=%s", [p.getName(),p.getWriter(),p.getGenre(),p.getRate(),p.getReview(),p.getId()])
+            dbcursor.execute("UPDATE product SET bname=%s, writer=%s, genre=%s, rate=%s, review=%s  WHERE id=%s", [p.getName(),p.getWriter(),p.getGenre(),p.getRate(),p.getReview(),p.getId()])
             print("orr")
         except:
             raise Exception('data insertion error')
