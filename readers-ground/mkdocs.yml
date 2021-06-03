@@ -1,1 +1,7 @@
 site_name: Readers Ground Project Documentation
+nav:
+  - Home : index.md
+  - About : About.md
+  - Features : Features.md
+theme:
+  name: readthedocs
