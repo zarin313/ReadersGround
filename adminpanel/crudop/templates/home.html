@@ -64,7 +64,8 @@
          
                 </div>
                     <br>
-                   
+                    <div class="row m-0 p-5">
+                    
                             <table class="table">
                               
                           <tr>
@@ -89,17 +90,19 @@
                            
                           {% endfor %}
                         </table>
+                    
              
                 <form action="{% url 'addcomment' %}" method='POST' enctype="multipart/form-data"  >
                    {% csrf_token %}
                     
                     
-              <div class="form-group-lg container h-80 w-20 shadow m-5 p-3 row" >
+              <div class="form-group-lg container  h-80 w-20 shadow m-5  row" >
             <label for="comment" >Comment here:</label>
             <textarea class="form-control" id="review" name="content"  > </textarea>
             
             <input  type='hidden' name='pid1' value="{{ item.getId }}">
             <input class="btn btn-primary" type="submit" value="Post Comment">
+          </div>
           </div>
         </form>
 
