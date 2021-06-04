@@ -63,7 +63,7 @@ def login(request):
         prodlist=pdao.showall()
         commlist=pdao.showc()
         django_form3=myforms.CForm()
-        
+        django_form1=logsignfroms.signupForm()
         if django_form.is_valid():
 
             name=django_form.cleaned_data['loginname']
@@ -76,9 +76,9 @@ def login(request):
             if is_valid is True:
                     
 
-                    username=request.session['username']
+                    request.session['username']=name
 
-                    return render(request, 'home.html', {'isvalid':True,'loggedin':True,'f':django_form3, 'data':prodlist, 'data1':commlist,'u':username })
+                    return redirect('homeview')
             else:
                  return render(request, 'login.html', {'fl':django_form,'f2':django_form1,'isvalid':False,'loggedin':False })
            

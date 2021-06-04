@@ -104,7 +104,7 @@ def update(request,pid):
             genre=django_form.cleaned_data['genre']
             rate=django_form.cleaned_data['rate']
             review=django_form.cleaned_data['review']
-            p=Product(pid, name, writer, genre, rate, review,'')
+            p=Product(pid, name,'', writer, genre, rate, review,'')
             dao=ProductDAO()
             print("pppppp")
             try:
@@ -151,7 +151,7 @@ def addcomment(request):
                 #reinitializing django form
                 django_form=myforms.CForm()
                 commlist=dao.showc()
-                return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
+                return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist,'u':userc})
             except:
                 return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
         else:

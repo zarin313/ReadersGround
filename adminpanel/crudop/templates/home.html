@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -40,11 +40,13 @@
                 {% for item in data %}
       
                 <div style="padding-left: 200px">
-                    <P><b>UserName:  {{ item.getuname }}  </P>
+                    <P><b>User Name:  {{ item.getuname }}  </P>
                     <p>Book Name: {{ item.getName }} &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Writer: {{ item.getWriter }}</p><br>
                     <p> Genre: {{ item.getGenre }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating: {{ item.getRate }}</p> </b><br>
-                     <div class="shadow" style="height:200px; width: 900px;overflow: auto" ><p>{{ item.getReview }} </p></div><br>
-                    <!--<img src='{{ item.getImgpath }}' style="width:300px;height:300px;">-->
+                    <div class="row m-0">
+                     <div class="shadow col-6 m-0" style="height:300px; width: 900px;overflow: auto" ><p>{{ item.getReview }} </p></div><br>
+                    <div class=" col-6 m-0"><img src='{{ item.getImgpath }}' style="width:300px;height:300px;"></div>
+                    </div>
                     {% if u == item.getuname %}
                     <form action="{% url 'update' item.getId %}" method='GET'>
                                 <input style="float: left" class="btn btn-primary" type="submit" value="Update">
