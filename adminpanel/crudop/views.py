@@ -1,16 +1,15 @@
-from django.shortcuts import render
+
+from django.shortcuts import *
 from . import myforms
 from django.core.files.storage import FileSystemStorage
-# importing database modules
 from .dbmodels.product import Product
 from .dbmodels.comment import Comment
 from .dbmodels.productdao import ProductDAO
-#JsonResponse
 from django.http import *
 # Create your views here.
 def logout(request):
     del request.session['username']
-    return render(request, 'login.html')
+    return redirect('loginview')
 def homeview(request):
     user=request.session['username']
     print("mmmm")
@@ -151,7 +150,7 @@ def addcomment(request):
                 #reinitializing django form
                 django_form=myforms.CForm()
                 commlist=dao.showc()
-                return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist,'u':userc})
+                return redirect('homeview')
             except:
                 return render(request, 'home.html', {'f':django_form,'data':prodlist,'data1':commlist})
         else:
