@@ -9,6 +9,7 @@ from crudop import myforms
 from crudop.dbmodels.product import Product
 from crudop.dbmodels.comment import Comment
 from crudop.dbmodels.productdao import ProductDAO
+
 # Create your views here.
 
 def loginview(request):
