@@ -3,5 +3,6 @@ nav:
   - Home : index.md
   - About : About.md
   - Features : Features.md
+  - How to use : How to use.md
 theme:
   name: readthedocs
